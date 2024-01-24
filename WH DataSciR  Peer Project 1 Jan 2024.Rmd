@@ -31,15 +31,19 @@ View(activity)
 
 ```
 
-```{r}
-#From the Files window, located CSV file, clicked on it and selected IMPORT DATASET.#Copied and pasted code provided to import dataset.
-#Run code and dataset will appear in global environment
+```{r }
 
-library(readr)
-activity <- read_csv("Wanda/Coursera/Data Science Foundations Using R Specialization/5 Reproducible Research/WK2 Coding Standards in R/activity.csv")
-View(activity)
+# Set the directory:
+setwd("~/Wanda/Coursera/Data Science Foundations Using R Specialization/5 Reproducible Research/WK2 Coding Standards in R")
 
 ```
+```{r}
+
+library(readr)
+activity <- read_csv(activity.csv")
+View(activity)
+```
+
 
 ```{r}
 
