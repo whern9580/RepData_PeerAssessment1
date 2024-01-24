@@ -2,13 +2,15 @@
 title: "WH DataSciR Course Peer Project 1"
 author: "Wanda Hernandez"
 date: "2024-01-24"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 
-```{r}
+```{r echo = TRUE}
 #-------------------- LOAD PACKAGES  --------------------
-install.packages("tidyverse")
+
 library(tidyverse)
 
 library(dplyr)
@@ -18,34 +20,26 @@ library(ggplot2)
 
 ```
 
-
-```{r}
-#From the Files window, located CSV file, clicked on it and selected IMPORT DATASET.#Copied and pasted code provided to import dataset.
-#Run code and dataset will appear in global environment
-
-library(readr)
-activity <- read_csv("activity.csv")
-View(activity)
-
-
-
-```
-
-```{r }
+```{r echo = TRUE}
 
 # Set the directory:
 setwd("~/Wanda/Coursera/Data Science Foundations Using R Specialization/5 Reproducible Research/WK2 Coding Standards in R")
 
 ```
-```{r}
+
+
+```{r  echo = TRUE}
+#From the Files window, located CSV file, clicked on it and selected IMPORT DATASET.#Copied and pasted code provided to import dataset.
+#Run code and dataset will appear in global environment
+
 
 library(readr)
-activity <- read_csv(activity.csv")
+activity <- read_csv("activity.csv")
 View(activity)
+
 ```
 
-
-```{r}
+```{r  echo = TRUE}
 
 #-------------------- EXPLORE DATA  --------------------
 
@@ -59,7 +53,7 @@ names(activity)
 
 ```
 
-```{r}
+```{r echo = TRUE}
 #Glimpse function gives mea summary of data. I can see the number rows(observations) and columns(variables)
 #I see that the steps variable has many missing values noted as NA.
 glimpse(activity)
@@ -67,7 +61,7 @@ glimpse(activity)
 
 ```
 
-```{r}
+```{r echo = TRUE}
 # -------------------- EXPLORATORY DATA ANALYSIS: COURSE QUESTIONS --------------------
 
 # -------------------- WHAT IS MEAN TOTAL NUMBER OF STEPS TAKEN PER DAY? --------------------
@@ -84,7 +78,7 @@ print(StepsEachDay)
 
 ```
 
-```{r}
+```{r echo = TRUE}
 
 # 2.  Make a histogram of the total number of steps taken each day
 
@@ -96,7 +90,7 @@ hist(StepsEachDay$TotalSteps,
 
 ```
 
-```{r}
+```{r echo = TRUE}
 
 # 3.  Calculate and report the mean and median of the total number of steps taken per day
 
@@ -109,7 +103,7 @@ print(medianSteps)
 
 ```
 
-```{r}
+```{r echo = TRUE}
 
 
 # --------------------what is average daily activity pattern? ---------------------
@@ -128,7 +122,7 @@ plot(FiveMinAvg,  type="l", main = "Average Steps of 5 Minute Interval", col = 3
 
 ```
 
-```{r}
+```{r echo = TRUE}
 
 
 # 2.  Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
@@ -139,7 +133,7 @@ print(paste("The maximum number of steps on average across all the days is", Max
 
 ```
 
-```{r}
+```{r echo = TRUE}
 
 # -------------------- Imputing missing values --------------------
 
@@ -157,7 +151,7 @@ sum(is.na(activity$steps))
 ```
 
 
-```{r}
+```{r echo = TRUE}
 
 #2.  Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
@@ -183,7 +177,7 @@ sum(is.na(activityZ))
 
 ```
 
-```{r}
+```{r echo = TRUE}
 
 # 4a. Make a histogram of the total number of steps taken each day 
 
@@ -199,7 +193,7 @@ print(StepsEachDayZ)
 
 ```
 
-```{r}
+```{r echo = TRUE}
 
 NoNAstepsEachDay <- activityZ %>% 
     group_by(date) %>% 
@@ -215,7 +209,7 @@ hist(NoNAstepsEachDay$TotalSteps,
 
 ```
 
-```{r}
+```{r echo = TRUE}
 
 # 4b. and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
     
@@ -228,7 +222,7 @@ print(medianStepsZ)
 
 ```
 
-```{r}
+```{r echo = TRUE}
 
 print("StepsEachDay: ")
 summary(StepsEachDay)
@@ -238,7 +232,7 @@ summary(StepsEachDayZ)
 
 
 ```
-```{r}
+```{r echo = TRUE}
 
 #4c. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
@@ -246,7 +240,7 @@ summary(StepsEachDayZ)
 
 ```
 
-```{r}
+```{r echo = TRUE}
 
 # ----- DIFFERENCES IN ACTIVITY PATTERNS BETWEEN WEEKDAYS AND WEEKENDS -----
 
@@ -261,7 +255,7 @@ glimpse(activityZ)
 
 ```
 
-```{r}
+```{r echo = TRUE}
 
 # 2. Make a panel plot containing a time series plot (i.e. type = "l" ) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
 
@@ -275,7 +269,7 @@ AvgEachDay <- activityZ %>%
 head(AvgEachDay)
 
 ```
-```{r}
+```{r echo = TRUE}
 
 ggplot(AvgEachDay, aes(x=interval, y=AverageSteps)) + 
   geom_line(color="blue") + 
